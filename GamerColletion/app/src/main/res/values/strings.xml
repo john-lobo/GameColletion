@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GamerColletion</string>
+    <string name="subscriber_inserted_successfully">Sucesso ao inserir game</string>
+    <string name="subscriber_error_to_insert">Erro ao inserir game</string>
+    <string name="subscriber_update_successfully">Dados do jogo atualizados</string>
+    <string name="subscriber_error_to_update">Erro ao atualizar dados</string>
+    <string name="subscriber_delete_successfully">Jogo deletado</string>
+    <string name="subscriber_error_to_delete">Erro ao deletar jogo</string>
+</resources>

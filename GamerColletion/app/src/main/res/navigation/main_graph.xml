@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/gameListFragment">
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.johnlennonlobo.gamercolletion.ui.game.GameFragment"
+        android:label="game_fragment"
+        tools:layout="@layout/game_fragment" >
+        <argument
+            android:name="gamer"
+            app:argType="com.johnlennonlobo.gamercolletion.data.db.entity.GameEntity"
+            android:defaultValue="@null"
+            app:nullable="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/gameListFragment"
+        android:name="com.johnlennonlobo.gamercolletion.ui.gameList.GameListFragment"
+        android:label="game_list_fragment"
+        tools:layout="@layout/game_list_fragment" >
+        <action
+            android:id="@+id/action_gameListFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+</navigation>
