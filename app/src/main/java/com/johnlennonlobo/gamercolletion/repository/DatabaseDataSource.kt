@@ -10,27 +10,21 @@ class DatabaseDataSource(private val gameDAO: GameDAO) : GamerRepository{
 
     override suspend fun insertJogo(title: String, nota: Float, imagem: Bitmap): Long {
 
-        val byteArray = ByteArrayOutputStream()
-        imagem.compress(Bitmap.CompressFormat.JPEG,100,byteArray)
-        val imagemB = byteArray.toByteArray()
-
-
         val gameEntity = GameEntity(
-            title = title, nota = nota, imagem = imagemB)
+            title = title,
+            nota = nota,
+            imagem = bitmapToByteArray(imagem)
+        )
         return gameDAO.insert(gameEntity)
     }
 
     override suspend fun updateJogo(id: Long, title: String, nota: Float, imagem: Bitmap) {
 
-        val byteArray = ByteArrayOutputStream()
-        imagem.compress(Bitmap.CompressFormat.JPEG,100,byteArray)
-        val imagemB = byteArray.toByteArray()
-
         val gameEntity = GameEntity(
             id = id,
             title = title,
             nota = nota,
-            imagem = imagemB
+            imagem = bitmapToByteArray(imagem)
         )
         gameDAO.update(gameEntity)
     }
@@ -41,5 +35,12 @@ class DatabaseDataSource(private val gameDAO: GameDAO) : GamerRepository{
 
     override suspend fun getAllJogo(): List<GameEntity> {
      return gameDAO.getAll()
+    }
+
+    private fun bitmapToByteArray(imagem: Bitmap): ByteArray {
+        val byteArray=ByteArrayOutputStream()
+        imagem.compress(Bitmap.CompressFormat.JPEG, 100, byteArray)
+        val imagemB=byteArray.toByteArray()
+        return imagemB
     }
 }

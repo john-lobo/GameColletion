@@ -34,7 +34,6 @@ class GameViewModel(private val repository: GamerRepository, private val context
             }else {
                 insertGame(title, nota, bitmap)
             }
-
     }
 
    private fun insertGame( title:String, nota:Float, imagem:Bitmap? = null){
