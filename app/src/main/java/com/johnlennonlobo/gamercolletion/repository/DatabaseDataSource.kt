@@ -21,10 +21,16 @@ class DatabaseDataSource(private val gameDAO: GameDAO) : GamerRepository{
     }
 
     override suspend fun updateJogo(id: Long, title: String, nota: Float, imagem: Bitmap) {
+
+        val byteArray = ByteArrayOutputStream()
+        imagem.compress(Bitmap.CompressFormat.JPEG,100,byteArray)
+        val imagemB = byteArray.toByteArray()
+
         val gameEntity = GameEntity(
             id = id,
             title = title,
-            nota = nota
+            nota = nota,
+            imagem = imagemB
         )
         gameDAO.update(gameEntity)
     }
