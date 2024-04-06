@@ -6,8 +6,7 @@ plugins {
     id 'kotlin-parcelize'
 }
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdk 31
 
     buildFeatures{
         dataBinding = true // for data binding
@@ -17,7 +16,7 @@ android {
     defaultConfig {
         applicationId "com.johnlennonlobo.mysubcribes"
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -56,7 +55,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //room
-    def room_version = "2.2.6"
+    def room_version = "2.4.0"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
